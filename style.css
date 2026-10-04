@@ -159,3 +159,7 @@ h3 { font-size: 17px; margin: 0 0 6px; }
   .grid.cards, .two-col { grid-template-columns: 1fr; }
   .two-col { gap: 16px; }
 }
+
+.role-item { margin-top: 14px; }
+.role-item h4 { font-size: 15px; margin: 0; font-weight: 600; }
+.role-item h4 span { display: block; font-size: 13px; color: var(--muted); font-weight: 500; }
