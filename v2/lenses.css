@@ -1,0 +1,166 @@
+/* "One requirement, four lenses" — scoped under #lenses, colours mapped to site variables */
+#lenses {
+  --paper: var(--bg-soft); --surface: var(--bg); --ink: var(--text); --rule: var(--border);
+  --cobalt: var(--accent); --cobalt-ink: #ffffff; --tint: var(--accent-soft); --lane: var(--accent-soft);
+  --error: #b42318;
+  --display: 'Inter', system-ui, sans-serif; --body: 'Inter', system-ui, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 16px;
+}
+:root[data-theme="dark"] #lenses { --cobalt-ink: #0d1117; --error: #ff8a80; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) #lenses { --cobalt-ink: #0d1117; --error: #ff8a80; } }
+#lenses .intro { max-width: 640px; color: var(--muted); margin: -12px 0 32px; }
+#lenses .lens-stage { min-width: 0; }
+#lenses .badge { margin: 0; }
+#lenses .req h3 { font-size: 24px; }
+#lenses .intro { max-width: 640px; color: var(--muted); font-size: 19px; margin: 0 0 56px; }
+#lenses .grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: start; }
+@media (max-width: 920px) {
+#lenses .grid { grid-template-columns: 1fr; }
+}
+#lenses /* ---------- the requirement ---------- */
+.req { position: sticky; top: 24px; background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 28px 28px 20px; }
+@media (max-width: 920px) {
+#lenses .req { position: static; }
+}
+#lenses .req-id { font-family: var(--mono); font-size: 14px; color: var(--muted); margin: 0 0 6px; }
+#lenses .req h3 { font-family: var(--display); font-weight: 600; font-size: 30px; line-height: 1.1; margin: 0 0 14px; }
+#lenses .story { margin: 0 0 22px; }
+#lenses .ac-title { font-weight: 600; font-size: 15px; margin: 0 0 8px; }
+#lenses .ac { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+#lenses .ac li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; padding: 10px 10px; border-radius: 12px; cursor: pointer; outline: none; transition: background-color .2s; }
+#lenses .ac li:hover,
+#lenses .ac li.hl,
+#lenses .ac li:focus-visible { background: var(--tint); }
+#lenses .ac li:focus-visible { box-shadow: 0 0 0 2px var(--cobalt); }
+#lenses .n { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--ink); display: grid; place-items: center; font-family: var(--mono); font-weight: 600; font-size: 14px; line-height: 1; margin-top: -2px; }
+#lenses .ac li.hl .n { background: var(--cobalt); border-color: var(--cobalt); color: var(--cobalt-ink); }
+#lenses .hint { margin: 16px 2px 0; font-size: 14px; color: var(--muted); }
+#lenses /* ---------- lens switcher ---------- */
+.lens-stage { min-width: 0; }
+#lenses .tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: var(--surface); border: 1px solid var(--rule); border-radius: 999px; width: fit-content; max-width: 100%; }
+#lenses .tabs button { font: 500 16px/1 var(--body); color: var(--ink); background: transparent; border: 0; border-radius: 999px; padding: 13px 20px; min-height: 44px; cursor: pointer; }
+#lenses .tabs button:hover { background: var(--tint); }
+#lenses .tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+#lenses .tabs button:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+@media (max-width: 600px) {
+#lenses .tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; border-radius: 18px; }
+#lenses .tabs button { border-radius: 12px; }
+#lenses table { min-width: 0; }
+#lenses th:nth-child(1),
+#lenses td:nth-child(1),
+#lenses th:nth-child(3),
+#lenses td:nth-child(3) { display: none; }
+#lenses th,
+#lenses td { padding: 12px 10px; }
+#lenses .qty input { width: 64px; }
+#lenses .err { max-width: 120px; }
+#lenses .panel { padding: 12px; }
+}
+#lenses .lens-note { margin: 18px 4px 16px; color: var(--muted); min-height: 1.55em; }
+#lenses .panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 28px; min-height: 440px; }
+#lenses .panel[hidden] { display: none; }
+@media (max-width: 600px) {
+#lenses .panel { padding: 18px; }
+}
+#lenses /* traceable targets: dim until a criterion lands on them */
+[data-to] { transition: opacity .45s ease, background-color .2s, box-shadow .2s, outline-color .2s; }
+#lenses .armed [data-to]:not(.landed) { opacity: .16; }
+#lenses [data-to].pulse { animation: pulse .7s ease-out; }
+#lenses .hl-mode [data-to]:not(.hl) { opacity: .28; }
+#lenses [data-to].hl { outline: 2px solid var(--cobalt); outline-offset: 3px; border-radius: 8px; }
+#lenses svg [data-to].hl { outline: none; }
+#lenses svg [data-to].hl .box { stroke: var(--cobalt); stroke-width: 3; }
+#lenses svg [data-to].hl text { fill: var(--cobalt); }
+#lenses svg [data-to].pulse { animation: none; }
+#lenses .ghost { position: fixed; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: var(--cobalt); color: var(--cobalt-ink); display: grid; place-items: center; font: 600 14px/1 var(--mono); pointer-events: none; z-index: 50; box-shadow: 0 6px 18px rgba(47, 79, 216, .35); }
+#lenses /* ---------- UI lens: a working screen ---------- */
+.app { border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: var(--surface); }
+#lenses .app-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--rule); }
+#lenses .app-head strong { font-family: var(--display); font-size: 22px; font-weight: 600; }
+#lenses .app-head span.app-sub { display: block; color: var(--muted); font-size: 14px; }
+#lenses .badge { font-size: 14px; font-weight: 600; padding: 6px 14px; border-radius: 999px; border: 2px solid var(--ink); white-space: nowrap; }
+#lenses .badge.done { background: var(--cobalt); border-color: var(--cobalt); color: var(--cobalt-ink); }
+#lenses .table-scroll { overflow-x: auto; }
+#lenses table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15px; }
+#lenses th,
+#lenses td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+#lenses th { font-weight: 600; color: var(--muted); font-size: 13px; }
+#lenses td.num,
+#lenses th.num { text-align: right; font-variant-numeric: tabular-nums; }
+#lenses .qty input { width: 84px; font: 500 16px var(--mono); padding: 8px 10px; border: 1.5px solid var(--rule); border-radius: 8px; background: var(--paper); color: var(--ink); text-align: right; }
+#lenses .qty input:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 1px; }
+#lenses .qty input[aria-invalid="true"] { border-color: var(--error); }
+#lenses .err { display: block; margin-top: 6px; font-size: 13px; color: var(--error); max-width: 190px; }
+#lenses .err[hidden] { display: none; }
+#lenses .app-foot { display: grid; grid-template-columns: 1fr auto; gap: 20px; padding: 18px 20px; align-items: start; }
+@media (max-width: 600px) {
+#lenses .app-foot { grid-template-columns: 1fr; }
+}
+#lenses .history h4 { margin: 0 0 6px; font-size: 14px; color: var(--muted); font-weight: 600; }
+#lenses .history ol { margin: 0; padding: 0; list-style: none; font-size: 14px; font-family: var(--mono); }
+#lenses .history li { padding: 3px 0; }
+#lenses .actions { display: flex; gap: 10px; align-items: center; }
+#lenses .btn { font: 600 16px var(--body); padding: 12px 22px; min-height: 44px; border-radius: 10px; border: 0; background: var(--ink); color: var(--paper); cursor: pointer; }
+#lenses .btn:focus-visible,
+#lenses .link:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+#lenses .link { font: 500 14px var(--body); background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 10px 4px; min-height: 44px; }
+#lenses .ui-tip { margin: 14px 2px 0; font-size: 14px; color: var(--muted); }
+#lenses /* ---------- backend lens ---------- */
+.api { font-family: var(--mono); font-size: 14px; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; margin-bottom: 22px; }
+#lenses .api > div { padding: 10px 16px; border-bottom: 1px solid var(--rule); overflow-x: auto; white-space: pre; }
+#lenses .api > div:last-child { border-bottom: 0; }
+#lenses .verb { display: inline-block; min-width: 48px; font-weight: 600; color: var(--cobalt); }
+#lenses .api .c { color: var(--muted); }
+#lenses .diagram { width: 100%; height: auto; display: block; overflow: visible; }
+#lenses .diagram text { font-family: var(--mono); font-size: 13px; fill: var(--ink); }
+#lenses .diagram .head { font-weight: 600; }
+#lenses .diagram .box { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+#lenses .diagram .headfill { fill: var(--lane); stroke: none; }
+#lenses .diagram .rowbg { fill: transparent; }
+#lenses svg [data-to].hl .rowbg { fill: var(--tint); }
+#lenses .diagram .rel { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+#lenses .diagram .card { font-size: 12px; fill: var(--muted); }
+#lenses .draw { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .9s ease; }
+#lenses .live .draw { stroke-dashoffset: 0; }
+#lenses .subhead { font-weight: 600; font-size: 15px; margin: 0 0 10px; }
+#lenses /* ---------- process lens ---------- */
+.bpmn text { font-family: var(--body); font-size: 14px; fill: var(--ink); }
+#lenses .bpmn .lbl { fill: var(--muted); font-size: 13px; }
+#lenses .bpmn .box { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+#lenses .bpmn .flow { fill: none; stroke: var(--ink); stroke-width: 2; }
+#lenses .bpmn .assoc { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
+#lenses /* ---------- full stack lens ---------- */
+.trace-wrap { position: relative; }
+#lenses .trace { list-style: none; margin: 0; padding: 0 0 0 40px; position: relative; display: grid; gap: 14px; }
+#lenses .trace::before { content: ""; position: absolute; left: 13px; top: 12px; bottom: 12px; width: 2px; background: var(--rule); }
+#lenses .runner { position: absolute; left: 6px; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: var(--cobalt); box-shadow: 0 0 0 6px var(--tint); }
+#lenses .live .runner { animation: run 3.2s cubic-bezier(.65, 0, .35, 1) .6s both; }
+#lenses .trace li { display: grid; grid-template-columns: 76px 1fr; gap: 14px; align-items: start; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+#lenses .layer { font: 600 12px/1 var(--mono); padding: 6px 0; text-align: center; border-radius: 6px; border: 1.5px solid var(--ink); }
+#lenses .layer.ui { background: var(--ink); color: var(--paper); }
+#lenses .trace code { font-family: var(--mono); font-size: 14px; word-break: break-word; }
+#lenses .trace p { margin: 0; }
+#lenses .trace .what { color: var(--muted); font-size: 14px; margin-top: 2px; }
+#lenses .foot { margin: 40px 0 0; color: var(--muted); font-size: 15px; max-width: 720px; }
+@media (prefers-reduced-motion: reduce) {
+#lenses [data-to],
+#lenses .draw,
+#lenses .ac li { transition: none !important; }
+#lenses .live .runner { animation: none; top: calc(100% - 22px); }
+#lenses [data-to].pulse { animation: none; }
+}
+@media (max-width: 600px) {
+#lenses table { min-width: 0; }
+#lenses th,
+#lenses td { padding: 12px 10px; }
+#lenses .qty input { width: 64px; }
+#lenses .err { max-width: 120px; }
+#lenses .panel { padding: 12px; }
+}
+
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--cobalt); } 100% { box-shadow: 0 0 0 14px transparent; } }
+@keyframes run { from { top: 6px; } to { top: calc(100% - 22px); } }
+
+/* wider than the 880px site column so the table and diagrams fit */
+#lenses { max-width: 1100px; }

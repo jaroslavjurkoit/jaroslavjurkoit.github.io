@@ -1,0 +1,81 @@
+/* Additions on top of ../style.css */
+
+/* Soft reveal (from concept 1) */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+.avatar { animation: float 6s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* Now */
+.now {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px;
+}
+.now > p { margin: 0 0 16px; font-size: 17px; }
+.facts { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 12px; }
+.facts li { display: grid; grid-template-columns: 140px 1fr; gap: 16px; font-size: 15px; }
+.facts strong { font-weight: 600; }
+.facts span { color: var(--muted); }
+.more { font-size: 15px; font-weight: 500; }
+
+/* Path */
+.path-intro { margin: -12px 0 28px; color: var(--muted); }
+.path { position: relative; list-style: none; margin: 0; padding: 0 0 0 36px; }
+.path-line {
+  position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px;
+  background: var(--border); border-radius: 2px;
+}
+.path-fill {
+  display: block; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, var(--accent), #7c3aed);
+  transform-origin: top; transform: scaleY(0);
+}
+.milestone { position: relative; padding-bottom: 28px; }
+.milestone:last-child { padding-bottom: 0; }
+.milestone .dot {
+  position: absolute; left: -36px; top: 22px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--border);
+  transition: background .4s, border-color .4s, box-shadow .4s;
+}
+.milestone.reached .dot {
+  background: var(--accent); border-color: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+.milestone .card h3 { font-size: 20px; margin: 4px 0 2px; }
+.milestone .card p { margin: 6px 0 0; }
+.milestone .card .note { margin: 0; }
+.gave {
+  margin-top: 14px !important; padding-top: 12px; border-top: 1px dashed var(--border);
+  color: var(--text) !important;
+}
+.gave strong {
+  display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--accent); margin-bottom: 2px;
+}
+
+@media (max-width: 680px) {
+  .facts li { grid-template-columns: 1fr; gap: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .avatar { animation: none; }
+  .path-fill { transform: scaleY(1); }
+}
+
+/* Approach */
+.pull {
+  margin: 24px 0 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--accent);
+  font-size: 18px; color: var(--text);
+}
+
+/* Achievements */
+.story-card dl { margin: 0; font-size: 15px; }
+.story-card dt {
+  margin-top: 10px; font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--accent);
+}
+.story-card dd { margin: 2px 0 0; color: var(--muted); }
+.card.reveal { transition-delay: 0s; }
