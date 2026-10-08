@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1ebdf">
+  <title>Jaroslav Jurkoit — Product Owner | Concept 03</title>
+  <style>
+    :root{color-scheme:light;--paper:#f1ebdf;--ink:#20221e;--muted:#74766c;--orange:#e35c34;--rule:#cfcbbe;--green:#b8cc9a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-snap-type:y proximity}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Georgia,"Times New Roman",serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1200px,calc(100% - 64px));margin:auto}header{height:78px;border-bottom:1px solid var(--rule);display:flex;align-items:center}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}.mast{font:750 11px/1.2 Inter,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase}nav{display:flex;gap:27px;font:13px Inter,system-ui,sans-serif;color:var(--muted)}nav a:hover{color:var(--orange)}
+    .screen{min-height:calc(100svh - 78px);padding:54px 0;display:grid;align-items:center;scroll-snap-align:start}
+    .hero{grid-template-columns:1.15fr .85fr;gap:40px}.overline{font:750 11px Inter,system-ui,sans-serif;color:var(--orange);letter-spacing:.16em;text-transform:uppercase}
+    h1{font-size:clamp(55px,8vw,108px);line-height:.83;letter-spacing:-.075em;font-weight:500;margin:22px 0 25px;max-width:700px}
+    h1 em{color:var(--orange);font-weight:500}.dek{font-size:19px;line-height:1.45;max-width:530px;color:#55584f}
+    .cta{display:inline-flex;margin-top:25px;align-items:center;gap:12px;border-bottom:1px solid var(--orange);padding-bottom:6px;font:700 13px Inter,system-ui,sans-serif}.cta span{color:var(--orange);font-size:20px;transition:transform .2s}.cta:hover span{transform:translate(4px,-3px)}
+    .hero-art{position:relative;min-height:490px;display:grid;place-items:center}
+    .sun{position:absolute;width:320px;height:320px;border-radius:50%;background:var(--green);right:4%;top:9%;animation:sunrise 1.2s cubic-bezier(.2,.7,.25,1) both}
+    .portrait-frame{position:relative;z-index:1;width:132px;transform:rotate(3deg);animation:photoIn .9s .2s both}
+    .portrait{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 15%;border:8px solid #fffaf0;box-shadow:0 22px 50px #25291b30}
+    .tape{position:absolute;z-index:2;width:88px;height:25px;background:#e35c3490;top:-10px;left:50%;transform:translateX(-50%) rotate(-7deg)}
+    .scribble{position:absolute;bottom:9%;left:3%;width:45%;height:90px;z-index:2}.scribble path{fill:none;stroke:var(--orange);stroke-width:2;stroke-dasharray:440;stroke-dashoffset:440;animation:scribble 1.8s .7s ease forwards}
+    .art-label{position:absolute;right:0;bottom:14%;font:italic 14px Georgia,serif;color:var(--muted);transform:rotate(-7deg)}
+    .side-index{position:absolute;left:0;top:8%;writing-mode:vertical-rl;transform:rotate(180deg);font:10px Inter,system-ui,sans-serif;letter-spacing:.16em;color:var(--muted)}
+    .second{background:#20221e;color:#f5efe2}.second-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+    .second .overline{color:#f19572}h2{font-size:clamp(40px,5vw,65px);line-height:.93;font-weight:500;letter-spacing:-.06em;margin:16px 0 22px}
+    .copy{max-width:450px;color:#c0c0b5;font-size:16px}.chapter{font:11px Inter,system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:#a6aa9b}
+    .mini-timeline{margin-top:28px;border-top:1px solid #55584f;display:grid;grid-template-columns:repeat(3,1fr)}.mini-timeline div{padding:13px 10px 0 0;color:#b5b8ab;font:11px Inter,system-ui,sans-serif}.mini-timeline b{display:block;color:#f5efe2;font-size:12px;margin-bottom:5px}
+    .film{position:relative;padding:12px;background:#11130f;border:1px solid #55584f;transform:rotate(1.3deg);box-shadow:12px 18px 0 #e35c34;transition:transform .3s}.film:hover{transform:rotate(0) translateY(-5px)}
+    video{display:block;width:100%;aspect-ratio:16/9;background:#070807}.film figcaption{padding:13px 3px 1px;color:#b5b8ab;font:11px Inter,system-ui,sans-serif;display:flex;justify-content:space-between;gap:12px}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
+    @keyframes sunrise{from{opacity:0;transform:scale(.76) translate(30px,20px)}to{opacity:1;transform:scale(1)}}@keyframes photoIn{from{opacity:0;transform:translateY(20px) rotate(-3deg)}to{opacity:1;transform:translateY(0) rotate(3deg)}}@keyframes scribble{to{stroke-dashoffset:0}}
+    @media(max-width:760px){.wrap{width:min(100% - 36px,560px)}header{height:65px}.screen{min-height:auto;padding:55px 0}.hero{grid-template-columns:1fr;gap:15px}.hero-art{min-height:360px}.sun{width:220px;height:220px;right:9%;top:5%}.side-index{left:-5px}.scribble{bottom:3%;left:9%}.art-label{right:4%;bottom:9%}.second-inner{grid-template-columns:1fr;gap:34px}.mini-timeline{gap:4px}nav{gap:15px;font-size:11px}nav a:nth-child(2){display:none}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}.scribble path{stroke-dashoffset:0}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a class="mast" href="#top">Jaroslav Jurkoit / Product Owner</a><nav aria-label="Main navigation"><a href="#case">Selected work</a><a href="mailto:jaroslaw.jurkoic@gmail.com">Say hello ↗</a></nav></div></header>
+  <main id="top">
+    <section class="screen hero wrap">
+      <div><div class="overline">Product Owner · Wrocław, Poland</div><h1>Good work<br>starts with<br><em>better questions.</em></h1><p class="dek">I help teams find the signal in complex business problems — then turn it into a product people can build and use.</p><a class="cta" href="mailto:jaroslaw.jurkoic@gmail.com">Let’s make it clearer <span>↗</span></a></div>
+      <div class="hero-art"><div class="side-index">01 / A considered approach</div><div class="sun"></div><div class="portrait-frame"><span class="tape"></span><img class="portrait" src="./Casual%20Nautical%20Club%20Selfie.png" alt="Jaroslav Jurkoit, Product Owner"></div><svg class="scribble" viewBox="0 0 300 100" aria-hidden="true"><path d="M5 63 C55 8 73 98 123 46 S195 80 230 39 S272 32 296 14"/></svg><div class="art-label">From discovery to delivery</div></div>
+    </section>
+    <section class="screen second" id="case"><div class="wrap second-inner">
+      <div class="reveal"><div class="chapter">02 / In practice</div><div class="overline">AI-assisted product work</div><h2>Less time formatting.<br>More time thinking.</h2><p class="copy">I built an AI workflow to help turn stakeholder conversations into structured requirements, process models and a clear backlog. On one project, preparation went from around two weeks to a few days.</p><div class="mini-timeline"><div><b>01 · Listen</b>Capture the real problem</div><div><b>02 · Shape</b>Make the process explicit</div><div><b>03 · Build</b>Give the team a clear brief</div></div></div>
+      <figure class="film reveal"><video controls playsinline preload="metadata" aria-label="AI-assisted requirements workflow demo"><source src="./ai-requirements-workflow%20%281%29.mp4" type="video/mp4">Your browser does not support embedded video.</video><figcaption><span>Workflow excerpt</span><span>Play when ready ↗</span></figcaption></figure>
+    </div></section>
+  </main>
+  <script>const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target)}}),{threshold:.16});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));</script>
+</body>
+</html>

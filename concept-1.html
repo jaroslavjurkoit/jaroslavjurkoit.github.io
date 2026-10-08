@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Jaroslav Jurkoit — Product Owner | Concept 01</title>
+  <style>
+    :root{color-scheme:light;--ink:#10213a;--muted:#617089;--blue:#3268ef;--paper:#f5f7fb;--line:#dce3ef;--white:#fff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-snap-type:y proximity}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 56px));margin:auto}
+    header{height:76px;display:flex;align-items:center;border-bottom:1px solid var(--line)}header .wrap{display:flex;align-items:center;justify-content:space-between}
+    .wordmark{font-size:13px;font-weight:750;letter-spacing:.14em;text-transform:uppercase}.nav{display:flex;gap:28px;color:var(--muted);font-size:14px}.nav a:hover{color:var(--blue)}
+    .screen{min-height:calc(100svh - 76px);padding:62px 0;display:grid;align-items:center;scroll-snap-align:start}
+    .hero{grid-template-columns:1fr .9fr;gap:72px}.eyebrow{color:var(--blue);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:750}
+    h1{font-size:clamp(46px,6.5vw,78px);line-height:.98;letter-spacing:-.065em;margin:16px 0}.role{font-size:19px;color:var(--blue);font-weight:650;margin:18px 0}
+    .intro{max-width:570px;color:var(--muted);font-size:17px}.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+    .button{padding:11px 17px;border-radius:11px;background:var(--blue);color:white;font-size:14px;font-weight:650;transition:transform .2s,box-shadow .2s}
+    .button:hover{transform:translateY(-3px);box-shadow:0 10px 24px #3268ef38}.button.secondary{background:white;color:var(--ink);border:1px solid var(--line)}
+    .portrait-card{position:relative;width:140px;justify-self:center;animation:float 6s ease-in-out infinite}
+    .portrait-card:before{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid #9ab4f3;border-radius:30px}
+    .portrait{position:relative;display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 15%;border-radius:26px;border:7px solid white;box-shadow:0 24px 70px #172b4a24}
+    .profile-note{position:absolute;right:-26px;bottom:25px;padding:13px 17px;background:white;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px #172b4a15;font-size:13px;animation:arrive .8s .3s both}
+    .profile-note b{display:block;font-size:15px}.scroll-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+    .hero-screen{position:relative}
+    .second{background:#fff}.second-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:58px;align-items:center}
+    h2{font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-.05em;margin:12px 0 20px}.copy{color:var(--muted);max-width:440px}
+    .steps{display:grid;gap:12px;margin-top:28px}.step{display:grid;grid-template-columns:38px 1fr;align-items:center;gap:13px;padding:13px 15px;border:1px solid var(--line);border-radius:14px;background:#fbfcff;animation:arrive .7s both}
+    .step:nth-child(2){animation-delay:.15s}.step:nth-child(3){animation-delay:.3s}.number{height:34px;width:34px;border-radius:11px;background:#eaf0ff;color:var(--blue);display:grid;place-items:center;font-size:12px;font-weight:750}
+    .step b{font-size:14px}.step small{display:block;color:var(--muted);font-size:12px}
+    .demo{padding:13px;background:#101827;border-radius:22px;box-shadow:0 25px 70px #10213a22;transform:translateY(0);transition:transform .35s}.demo:hover{transform:translateY(-6px)}
+    video{display:block;width:100%;aspect-ratio:16/9;background:#090e18;border-radius:13px}.demo-caption{padding:13px 4px 3px;color:#d9e3f4;font-size:13px}
+    .fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.fade.visible{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes arrive{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:760px){.wrap{width:min(100% - 36px,560px)}header{height:64px}.nav{gap:14px;font-size:12px}.nav a:nth-child(2){display:none}.screen{min-height:auto;padding:58px 0}.hero{grid-template-columns:1fr;gap:38px}.hero-screen{padding-bottom:56px}.profile-note{right:-22px}.second-inner{grid-template-columns:1fr;gap:32px}.scroll-hint{display:none}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.fade{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a class="wordmark" href="#top">Jaroslav Jurkoit</a><nav class="nav" aria-label="Main navigation"><a href="#approach">Approach</a><a href="mailto:jaroslaw.jurkoic@gmail.com">Contact</a></nav></div></header>
+  <main id="top">
+    <section class="screen hero hero-screen wrap">
+      <div><div class="eyebrow">Product Owner · Wrocław, Poland</div><h1>Make complex<br>work feel clear.</h1><p class="role">Financial software · ERP · Product discovery</p><p class="intro">I turn stakeholder conversations into focused requirements, process models and a backlog engineers can build from. From discovery to delivery, with AI as a practical accelerator.</p><div class="actions"><a class="button" href="mailto:jaroslaw.jurkoic@gmail.com">Let’s talk ↗</a><a class="button secondary" href="#approach">See how I work</a></div></div>
+      <div class="portrait-card"><img class="portrait" src="./Casual%20Nautical%20Club%20Selfie.png" alt="Portrait of Jaroslav Jurkoit"><div class="profile-note"><b>Product Owner</b>Open to remote work</div></div>
+      <a class="scroll-hint" href="#approach">Scroll to explore ↓</a>
+    </section>
+    <section class="screen second" id="approach"><div class="wrap second-inner">
+      <div class="fade"><div class="eyebrow">My working rhythm</div><h2>Clarity at every step.</h2><p class="copy">A practical product loop: understand the problem, make the process visible, then give the team a clear next step.</p><div class="steps"><div class="step"><span class="number">01</span><div><b>Discover</b><small>Listen, research, align stakeholders</small></div></div><div class="step"><span class="number">02</span><div><b>Structure</b><small>Map the domain and model the process</small></div></div><div class="step"><span class="number">03</span><div><b>Deliver</b><small>Prioritize a buildable, traceable backlog</small></div></div></div></div>
+      <div class="demo fade"><video controls playsinline preload="metadata" aria-label="AI-assisted requirements workflow demo"><source src="./ai-requirements-workflow%20%281%29.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="demo-caption">A closer look · AI-assisted requirements workflow</div></div>
+    </div></section>
+  </main>
+  <script>const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.18});document.querySelectorAll(".fade").forEach(el=>observer.observe(el));</script>
+</body>
+</html>
