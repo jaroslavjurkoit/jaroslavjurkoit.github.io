@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side Projects — Jaroslav Jurkoit</title>
+  <meta name="description" content="Side projects by Jaroslav Jurkoit.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="v2.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <nav>
+        <a href="../index.html#hello">Hello</a>
+        <a href="side-projects.html" aria-current="page">Projects</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="icon-sun">☀</span><span class="icon-moon">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="container section">
+      <h1>Side projects</h1>
+      <p class="lead">A couple of projects I work on alongside my main role.</p>
+      <div class="grid cards">
+        <article class="card placeholder reveal">
+          <img class="side-project-image" src="outside-project.png" alt="Outside — Your Bubble mobile app logo">
+          <span class="badge">Mobile app</span>
+          <h2>Outside Your Bubble</h2>
+          <p>A mobile app that helps you hear stories and perspectives beyond the themes of your day-to-day life.</p>
+        </article>
+        <article class="card placeholder reveal">
+          <img class="side-project-image" src="ig-story-expert.png" alt="IG Story Expert Telegram bot profile image">
+          <span class="badge">Telegram bot</span>
+          <h2>IG Story Expert</h2>
+          <p>A Telegram bot that extends an Instagram Stories creation course, built with AI instructions, evaluation sets, a harness, and a database.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    © <span id="year"></span> Jaroslav Jurkoit
+  </footer>
+
+  <script src="v2.js"></script>
+</body>
+</html>

@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jaroslav Jurkoit — Product Owner</title>
   <meta name="description" content="Jaroslav Jurkoit — Product Owner in financial software & ERP. Wrocław, Poland · Open to remote.">
-  <meta property="og:title" content="Jaroslav Jurkoit — Product Owner">
-  <meta property="og:description" content="Product Owner · Financial Software & ERP · Wrocław, Poland · Open to remote">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563eb'/><text x='50' y='66' font-size='44' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'>JJ</text></svg>">
+  <link rel="icon" type="image/png" href="v2/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="v2/v2.css">
+  <link rel="stylesheet" href="v2/audiences.css">
   <script>
     // Apply saved theme before paint to avoid a flash
     (function () {
@@ -25,10 +24,8 @@
   <header class="nav">
     <div class="container nav-inner">
       <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#hello">Hello</a>
+        <a href="v2/side-projects.html">Projects</a>
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <span class="icon-sun">☀</span><span class="icon-moon">☾</span>
@@ -37,185 +34,208 @@
   </header>
 
   <main id="top">
-    <!-- Hero -->
-    <section class="hero container">
-      <div class="avatar">
-        <img src="./Casual Nautical Club Selfie.png" alt="Jaroslav Jurkoit portrait">
-      </div>
-      <div>
+    <!-- 1. Hello — who I am now -->
+    <section id="hello" class="hero hero-character">
+      <div class="hero-copy">
         <p class="eyebrow">Hi, I'm</p>
         <h1>Jaroslav Jurkoit</h1>
         <p class="role">Product Owner · Financial Software &amp; ERP</p>
+        <!-- TODO: replace with your own short personal text (2–3 sentences, no CV recap) -->
         <p class="lead">
-          I take products from discovery to delivery — turning conversations with stakeholders
-          into clear requirements, process models and a backlog engineers love to work with.
-          I use AI every day to do it faster.
+          I help teams build software! 
         </p>
-        <p class="meta">📍 Wrocław, Poland · Open to remote</p>
+        <p class="meta">📍 Wrocław, Poland · Open to relocate</p>
         <div class="links">
-          <a class="btn primary" href="mailto:jaroslaw.jurkoic@gmail.com">✉ Email me</a>
+          <a class="btn primary" href="mailto:jaroslaw.jurkoic@gmail.com">Email me</a>
           <a class="btn" href="https://www.linkedin.com/in/jaroslav-jurkoit" target="_blank" rel="noopener">in LinkedIn</a>
         </div>
       </div>
+      <div class="hero-art">
+        <img src="v2/hero-character.png" alt="Illustration of Jaroslav working on a laptop">
+      </div>
     </section>
 
-    <!-- About / strengths -->
-    <section id="about" class="container section">
-      <h2>What I do best</h2>
-      <div class="grid cards">
-        <div class="card">
-          <h3>Product ownership</h3>
-          <p>From discovery to delivery: roadmap, planning, prioritization, backlog and user stories.</p>
+    <!-- 2. What I'm working on -->
+    <section id="now" class="container section">
+      <h2>What I'm working on</h2>
+      <div class="now reveal">
+        <div class="now-head">
+          <p>Purchase-to-Pay module in a financial ERP, built from scratch.</p>
         </div>
-        <div class="card">
-          <h3>Requirements engineering</h3>
-          <p>IREB CPRE-FL certified. Use cases, process modeling in BPMN and UML.</p>
+
+        <ol class="p2p" aria-label="Purchase-to-Pay workflow: order, approve, receive, match, pay">
+          <li><span class="p2p-dot">1</span>Order</li>
+          <li><span class="p2p-dot">2</span>Approve</li>
+          <li><span class="p2p-dot">3</span>Receive</li>
+          <li><span class="p2p-dot">4</span>Match</li>
+          <li><span class="p2p-dot">5</span>Pay</li>
+        </ol>
+
+        <div class="now-pair">
+          <div><h4>The problem</h4><p>Spend gets committed without approval, and invoices are paid without proof of delivery.</p></div>
+          <div><h4>What we're doing</h4><p>We're replacing this with one controlled workflow, from order to payment.</p></div>
         </div>
-        <div class="card">
-          <h3>AI in product work</h3>
-          <p>GitHub Copilot, Claude Code, Codex and LLMs in everyday work. Building with Claude/Gemini APIs, evals, batch processing.</p>
+
+        <div class="now-impact">
+          <h4>The impact</h4>
+          <p>Every purchase is authorised up front, matched to what was delivered and fully auditable, giving finance real-time visibility.</p>
         </div>
-        <div class="card">
-          <h3>Discovery &amp; research</h3>
-          <p>User discovery, stakeholder interviews, competitor and market research.</p>
+
+        <div class="now-small">
+          <div><h4>What differentiates us</h4><p>A huge customer base, our company as the first customer, and in-house design and SME teams.</p></div>
+          <div><h4>Who I work with</h4><p>Engineering Manager, developers, QA, UX, Head of Product and stakeholders.</p></div>
+          <div><h4>What I own</h4><p>The product side: scope, priorities and what we build.</p></div>
+        </div>
+
+        <a class="more" href="https://www.linkedin.com/in/jaroslav-jurkoit" target="_blank" rel="noopener">Full details are in my CV →</a>
+      </div>
+    </section>
+
+    <!-- 3. How I work -->
+    <section id="approach" class="container section">
+      <h2>How I work</h2>
+      <p class="how-lead">We work in a microservices architecture with many cross-module dependencies.</p>
+      <div class="how-points">
+        <div><h4>Domain</h4><p>I'm deeply engaged in domain modelling; I can explain every detail of what we do and why.</p></div>
+        <div><h4>Hands-on</h4><p>I can find information and test deliveries with Postman, Bruno, or by reading docs and code with GitHub Copilot.</p></div>
+        <div><h4>AI</h4><p>I constantly use AI to work better and faster; implement skills, agents and workflows step by step to keep everything aligned.</p></div>
+      </div>
+      <div class="project-demo how-work-demo">
+        <div class="video-wrap">
+          <video class="project-video how-video" controls muted playsinline preload="metadata" aria-label="AI-assisted requirements workflow demo">
+            <source src="ai-requirements-workflow%20%281%29.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+        </div>
+        <div class="project-copy">
+          <h3>AI-assisted requirements workflow</h3>
+          <p>I use AI to turn stakeholder conversations into structured requirements, process models and a clear product backlog.</p>
+          <p class="how-note">I keep improving and sharing my AI-enhanced processes, so the one in the video may already look different.</p>
         </div>
       </div>
-
-      <h3 class="sub">Tools</h3>
-      <ul class="tags">
-        <li>Azure DevOps</li><li>Jira</li><li>Confluence</li><li>GitHub</li><li>Git</li>
-        <li>VS Code</li><li>GitHub Copilot</li><li>Claude Code</li><li>Codex</li>
-        <li>SQL</li><li>Excel</li><li>Miro</li><li>Draw.io</li><li>BPMN</li><li>UML</li>
-      </ul>
     </section>
 
-    <!-- Experience -->
-    <section id="experience" class="container section">
-      <h2>Experience</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">Jul 2022 — Present · 4 yrs 4 mos</div>
-          <div class="what">
-            <h3>Spyrosoft S.A.</h3>
-            <p class="note">Wrocław, Poland</p>
-            <div class="role-item">
-              <h4>Product Owner <span>Jan 2026 — Present</span></h4>
-              <ul>
-                <li>Lead a team of 3 backend engineers, a tech lead and QA, building a new Purchase Ordering module (Purchase-to-Pay) from scratch.</li>
-                <li>Own the product side of the module: roadmap, planning, process modeling, requirements, backlog and prioritization — based on discovery across six departments.</li>
-                <li>Built my own AI setup in VS Code with GitHub Copilot to write documentation, refine requirements, draft user stories and define the domain — cutting requirement preparation from about two weeks to a few days.</li>
-                <li>Later asked to help other teams adopt the same approach.</li>
-              </ul>
+    <section id="audiences" class="container section" aria-labelledby="audiences-title">
+      <div class="aud-wrap">
+        <h2 id="audiences-title">Same requirement, two lenses</h2>
+        <p class="aud-lead">I've written requirements for pure backend work, pure frontend work and features that cut through both.</p>
+
+        <div class="aud-tabs" role="tablist" aria-label="Audience">
+          <button role="tab" aria-selected="true" aria-controls="aud-ui" data-audience="ui" tabindex="0">For frontenders</button>
+          <button role="tab" aria-selected="false" aria-controls="aud-be" data-audience="be" tabindex="-1">For backenders</button>
+        </div>
+
+        <div class="aud-card">
+          <div>
+            <p class="aud-kicker" id="aud-kicker">UI story</p>
+            <h3>Record a delivery</h3>
+            <ol class="aud-items" id="aud-items"></ol>
+          </div>
+
+          <div class="aud-stage" id="aud-ui" role="tabpanel" aria-label="Screen built from the UI story">
+            <div class="aud-screen-title">Record a delivery</div>
+            <div class="aud-fld" data-aud-to="1"><label>Delivery note number</label><div class="aud-box">DN-17734</div><div class="aud-err">Already recorded for this supplier</div></div>
+            <div class="aud-fld" data-aud-to="2"><label>Receive now: Monitor arm</label><div class="aud-box">5</div><div class="aud-err">Can't receive more than the open quantity (4)</div></div>
+            <div class="aud-save" data-aud-to="3"><span class="aud-btn">Save delivery</span><span class="aud-ok">Delivery GR000312 recorded</span></div>
+          </div>
+
+          <div class="aud-stage" id="aud-be" role="tabpanel" aria-label="API and schema built from the backend story" hidden>
+            <div class="aud-code" data-aud-to="3"><b>POST</b> /goods-receipts → 201 GR000312</div>
+            <div class="aud-tables">
+              <div class="aud-tbl"><div class="aud-th">goods_receipt</div>
+                <div class="aud-tr" data-aud-to="3"><span>reference_number</span><span>UQ</span></div>
+                <div class="aud-tr" data-aud-to="1"><span>delivery_note_no</span><span>varchar(40)</span></div>
+              </div>
+              <div class="aud-tbl"><div class="aud-th">goods_receipt_line</div>
+                <div class="aud-tr" data-aud-to="2"><span>quantity</span><span>dec(12,3)</span></div>
+              </div>
             </div>
-            <div class="role-item">
-              <h4>Business Analyst <span>Feb 2024 — Jan 2026</span></h4>
-              <ul>
-                <li>Supported the Product Manager in building out the Accounts Payable domain through domain modeling, research, competitor analysis and refinement preparation.</li>
-                <li>Ran competitor analysis using API documentation, industry forums and other sources.</li>
-                <li>Presented findings weekly to the Principal Product Manager and the product team to support feature decisions.</li>
-              </ul>
-            </div>
-            <div class="role-item">
-              <h4>Recruitment Specialist <span>Jul 2022 — Feb 2024</span></h4>
-              <ul>
-                <li>Ran technical hiring end to end, from sourcing to placement.</li>
-                <li>Worked closely with hiring managers to understand and refine what each role needed.</li>
-              </ul>
-            </div>
+            <div class="aud-code" data-aud-to="1">422 DUPLICATE_DELIVERY_NOTE</div>
+            <div class="aud-code" data-aud-to="2">422 QUANTITY_EXCEEDS_OPEN</div>
+          </div>
+        </div>
+        <p class="aud-foot">Fictional example. Hover a line to trace it.</p>
+      </div>
+    </section>
+
+    <!-- 4. Path to a product role -->
+    <section id="path" class="container section">
+      <h2>The path to a product role</h2>
+      <p class="path-intro">Each step gave me something the next one needed.</p>
+
+      <ol class="path" id="path-road">
+        <li class="path-line" aria-hidden="true"><span class="path-fill" id="pathFill"></span></li>
+
+        <li class="milestone reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="card">
+            <div class="when">Sep 2018 — Oct 2021 · Tasso Sp.z o.o.</div>
+            <h3>My first office job</h3>
+            <p>Tasso, my first office job, taught me ownership. I spotted an opportunity and created a brand new service for the company. While we were handling legal support for foreign workers, I pitched and managed a new IT recruitment service directly for our tech clients.</p>
           </div>
         </li>
-        <li>
-          <div class="when">Oct 2021 — Jul 2022</div>
-          <div class="what">
-            <h3>EPAM Systems</h3>
-            <p class="note">Wrocław, Poland</p>
-            <div class="role-item">
-              <h4>IT Researcher</h4>
-              <ul>
-                <li>Sourced IT candidates — software developers, DevOps engineers, testers, business analysts and more.</li>
-                <li>Guided candidates through the sourcing process.</li>
-                <li>Mapped the IT talent market and analyzed competitor hiring, producing reports on talent availability, salary ranges and skills for recruitment teams.</li>
-              </ul>
-            </div>
+
+        <li class="milestone reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="card">
+            <div class="when">Oct 2021 — Feb 2024</div>
+            <h3>Recruitment</h3>
+            <p class="note">EPAM Systems · Spyrosoft</p>
+            <p>IT Recruiter taught me how to manage expectations and give clear feedback. It was also my introduction to the IT world - its terminology, roles, and development processes.</p>
           </div>
         </li>
-        <li>
-          <div class="when">Sep 2018 — Oct 2021 · 3 yrs 2 mos</div>
-          <div class="what">
-            <h3>TASSO</h3>
-            <p class="note">Toruń, Poland</p>
-            <div class="role-item">
-              <h4>IT Recruiter <span>Apr 2021 — Oct 2021</span></h4>
-            </div>
-            <div class="role-item">
-              <h4>Junior HR Specialist (for foreign employees) <span>Jul 2019 — Apr 2021</span></h4>
-            </div>
-            <div class="role-item">
-              <h4>Coordinator for foreign workers <span>Sep 2018 — Jul 2019</span></h4>
-            </div>
+
+        <li class="milestone reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="card">
+            <div class="when">Feb 2024 - Jan 2026</div>
+            <h3>Business Analysis</h3>
+            <p class="note">Spyrosoft · Accounts Payable domain</p>
+            <p>As a Business Analyst, I learned how to model domains, conduct competitor research, navigate the SDLC, estimate software for clients, and quickly map processes in new industries.</p>
           </div>
         </li>
-        <li>
-          <div class="when">Aug 2017 — Dec 2017</div>
-          <div class="what">
-            <h3>Freelance</h3>
-            <p class="note">Minsk, Belarus · <a href="https://freelance.ru/jara-design" target="_blank" rel="noopener">freelance.ru/jara-design</a></p>
-            <div class="role-item">
-              <h4>Web Designer</h4>
-              <ul>
-                <li>Created graphic designs for websites, business cards, posters, banners and logos in Adobe Photoshop.</li>
-              </ul>
-            </div>
+
+        <li class="milestone reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="card">
+            <div class="when">Jan 2026 - Present</div>
+            <h3>Product Owner</h3>
+            <p class="note">Spyrosoft · Purchase Ordering module</p>
+            <p>As a Product Owner, I currently focus on balancing expectations and managing requirements across multiple stakeholder streams.</p>
           </div>
         </li>
       </ol>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="container section">
-      <h2>Projects</h2>
-      <div class="project-demo">
-        <div class="video-wrap">
-          <video class="project-video" controls preload="metadata" playsinline>
-            <source src="./ai-requirements-workflow%20%281%29.mp4" type="video/mp4">
-            Your browser does not support HTML video.
-          </video>
+    <!-- 6. Key achievements -->
+    <section id="achievements" class="container section">
+      <h2>Key achievements</h2>
+      <div class="grid cards">
+        <div class="card reveal story-card">
+          <h3>TODO: short title</h3>
+          <dl>
+            <dt>Problem</dt><dd>TODO</dd>
+            <dt>What I did</dt><dd>TODO</dd>
+            <dt>What changed</dt><dd>TODO (add numbers only where they help)</dd>
+          </dl>
         </div>
-        <div class="project-copy">
-          <span class="badge">AI workflow demo</span>
-          <h3>AI-assisted requirements workflow</h3>
-          <p>I use AI to turn stakeholder conversations into structured requirements, process models and a clear product backlog — faster, with better traceability and less friction.</p>
+        <div class="card reveal story-card">
+          <h3>AI-assisted requirements</h3>
+          <dl>
+            <dt>Problem</dt><dd>Preparing requirements took about two weeks.</dd>
+            <dt>What I did</dt><dd>Built my own AI setup in VS Code with GitHub Copilot for documentation, user stories and domain definition.</dd>
+            <dt>What changed</dt><dd>Preparation takes a few days; other teams asked for the same approach.</dd>
+          </dl>
         </div>
-      </div>
-    </section>
-
-    <!-- Education & languages -->
-    <section class="container section two-col">
-      <div>
-        <h2>Education &amp; certifications</h2>
-        <ul class="plain">
-          <li><strong>IREB CPRE Foundation Level</strong><br><span>Certified Professional for Requirements Engineering</span></li>
-          <li><strong>Google Cloud Digital Leader</strong></li>
-          <li><strong>BCom, Business Communication &amp; Psychology</strong><br><span>Nicolaus Copernicus University, Toruń</span></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Languages</h2>
-        <ul class="plain">
-          <li><strong>English</strong> — B2/C1, daily working language</li>
-          <li><strong>Polish</strong> — native</li>
-          <li><strong>Russian</strong> — native</li>
-          <li><strong>Belarusian</strong> — native</li>
-        </ul>
       </div>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="container section contact">
-      <h2>Let's talk</h2>
-      <p>Open to Product Owner roles in fintech, ERP and B2B SaaS — remote or in Wrocław.</p>
+      <h2>Let's work together</h2>
+      <p>Open to Product Owner/Product Manager roles - open to relocation.</p>
       <div class="links center">
-        <a class="btn primary" href="mailto:jaroslaw.jurkoic@gmail.com">jaroslaw.jurkoic@gmail.com</a>
+        <a class="btn primary" href="mailto:jaroslaw.jurkoic@gmail.com">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/jaroslav-jurkoit" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </section>
@@ -225,16 +245,7 @@
     © <span id="year"></span> Jaroslav Jurkoit
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('themeToggle').addEventListener('click', function () {
-      var root = document.documentElement;
-      var current = root.getAttribute('data-theme') ||
-        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      var next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
-  </script>
+  <script src="v2/v2.js"></script>
+  <script src="v2/audiences.js"></script>
 </body>
 </html>

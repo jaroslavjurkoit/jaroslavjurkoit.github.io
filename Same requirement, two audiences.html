@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Same requirement, two audiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F1F3EF; --surface: #FFFFFF; --ink: #172033; --muted: #545C6E; --rule: #C9CED6;
+  --cobalt: #2F4FD8; --on-cobalt: #FFFFFF; --tint: rgba(47, 79, 216, .10); --lane: #E4E9F8; --error: #B42318;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #131824; --surface: #1B2131; --ink: #E8EBF1; --muted: #A6AEBF; --rule: #343C4F; --cobalt: #8098FF; --on-cobalt: #0E1323; --tint: rgba(128, 152, 255, .14); --lane: #1F2944; --error: #FF8A80; }
+}
+:root[data-theme="dark"] { --paper: #131824; --surface: #1B2131; --ink: #E8EBF1; --muted: #A6AEBF; --rule: #343C4F; --cobalt: #8098FF; --on-cobalt: #0E1323; --tint: rgba(128, 152, 255, .14); --lane: #1F2944; --error: #FF8A80; }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 "IBM Plex Sans", system-ui, sans-serif; }
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 64px 24px; }
+h2 { font: 600 clamp(32px, 4.4vw, 48px)/1.05 "IBM Plex Sans Condensed", "Arial Narrow", sans-serif; margin: 0 0 10px; }
+.lead { color: var(--muted); margin: 0 0 24px; max-width: 560px; }
+
+.tabs { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--rule); border-radius: 999px; background: var(--surface); margin-bottom: 16px; }
+.tabs button { font: 500 15px var(--font, inherit); color: var(--ink); background: none; border: 0; border-radius: 999px; padding: 0 18px; min-height: 44px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.tabs button:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+
+.card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 24px; }
+@media (max-width: 760px) { .card { grid-template-columns: minmax(0, 1fr); } }
+
+.kicker { font: 13px var(--mono); color: var(--muted); margin: 0 0 4px; }
+h3 { font-size: 20px; margin: 0 0 12px; }
+.items { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; transition: opacity .2s; }
+.items.swap { opacity: 0; }
+.items li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 8px; border-radius: 10px; font-size: 15px; cursor: pointer; outline: none; }
+.items li:hover, .items li.hl, .items li:focus-visible { background: var(--tint); }
+.n { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--ink); display: grid; place-items: center; font: 600 12px var(--mono); }
+.items li.hl .n { background: var(--cobalt); border-color: var(--cobalt); color: var(--on-cobalt); }
+code, .f { font-family: var(--mono); font-size: .88em; }
+.f { font-weight: 600; }
+
+.stage { border-radius: 14px; background: var(--paper); padding: 18px; min-height: 270px; display: grid; align-content: start; gap: 12px; }
+.stage[hidden] { display: none; }
+[data-to] { transition: opacity .4s, translate .4s; }
+.armed [data-to]:not(.on) { opacity: 0; translate: 0 6px; }
+.hl-mode [data-to]:not(.hl) { opacity: .25; }
+[data-to].hl { outline: 2px solid var(--cobalt); outline-offset: 3px; border-radius: 8px; }
+
+/* UI sketch */
+.screen-title { font-weight: 600; font-size: 15px; }
+.fld label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; }
+.box { background: var(--surface); border: 1.5px solid var(--error); border-radius: 8px; padding: 8px 10px; font: 14px var(--mono); }
+.err { font-size: 12.5px; color: var(--error); margin-top: 4px; }
+.save { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.btn { background: var(--ink); color: var(--paper); border-radius: 8px; padding: 8px 16px; font-weight: 600; font-size: 14px; }
+.ok { font-size: 13px; font-weight: 600; color: var(--cobalt); }
+
+/* Backend sketch */
+.code { font: 13px/1.5 var(--mono); background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 12px; overflow-x: auto; white-space: nowrap; }
+.code b { color: var(--cobalt); }
+.tables { display: grid; gap: 10px; }
+.tbl { background: var(--surface); border: 1.5px solid var(--ink); border-radius: 8px; overflow: hidden; font: 12.5px var(--mono); }
+.tbl .th { background: var(--lane); font-weight: 600; padding: 6px 10px; }
+.tbl .tr { display: flex; justify-content: space-between; gap: 8px; padding: 4px 10px; }
+.tbl .tr span:last-child { color: var(--muted); }
+
+.ghost { position: fixed; left: 0; top: 0; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--cobalt); color: var(--on-cobalt); display: grid; place-items: center; font: 600 12px var(--mono); pointer-events: none; z-index: 9; }
+.foot { color: var(--muted); font-size: 14px; margin: 14px 2px 0; }
+
+@media (prefers-reduced-motion: reduce) { [data-to], .items { transition: none; } }
+</style>
+</head>
+<body>
+<section class="wrap" aria-labelledby="t">
+  <h2 id="t">Same requirement, two lenses</h2>
+  <p class="lead">I've written requirements for pure backend work, pure frontend work and features that cut through both.</p>
+
+  <div class="tabs" role="tablist" aria-label="Audience">
+    <button role="tab" aria-selected="true" aria-controls="s-ui" data-lens="ui">For frontenders</button>
+    <button role="tab" aria-selected="false" aria-controls="s-be" data-lens="be" tabindex="-1">For backenders</button>
+  </div>
+
+  <div class="card">
+    <div>
+      <p class="kicker" id="kicker">UI story</p>
+      <h3>Record a delivery</h3>
+      <ol class="items" id="items"></ol>
+    </div>
+
+    <div class="stage" id="s-ui" role="tabpanel" aria-label="Screen built from the UI story">
+      <div class="screen-title">Record a delivery</div>
+      <div class="fld" data-to="1"><label>Delivery note number</label><div class="box">DN-17734</div><div class="err">Already recorded for this supplier</div></div>
+      <div class="fld" data-to="2"><label>Receive now: Monitor arm</label><div class="box">5</div><div class="err">Can't receive more than the open quantity (4)</div></div>
+      <div class="save" data-to="3"><span class="btn">Save delivery</span><span class="ok">Delivery GR000312 recorded</span></div>
+    </div>
+
+    <div class="stage" id="s-be" role="tabpanel" aria-label="API and schema built from the backend story" hidden>
+      <div class="code" data-to="3"><b>POST</b> /goods-receipts → 201 GR000312</div>
+      <div class="tables">
+        <div class="tbl"><div class="th">goods_receipt</div>
+          <div class="tr" data-to="3"><span>reference_number</span><span>UQ</span></div>
+          <div class="tr" data-to="1"><span>delivery_note_no</span><span>varchar(40)</span></div>
+        </div>
+        <div class="tbl"><div class="th">goods_receipt_line</div>
+          <div class="tr" data-to="2"><span>quantity</span><span>dec(12,3)</span></div>
+        </div>
+      </div>
+      <div class="code" data-to="1">422 DUPLICATE_DELIVERY_NOTE</div>
+      <div class="code" data-to="2">422 QUANTITY_EXCEEDS_OPEN</div>
+    </div>
+  </div>
+  <p class="foot">Fictional example. Hover a line to trace it.</p>
+</section>
+
+<script>
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const text = {
+    ui: ["UI story", [
+      '<span class="f">Delivery note number</span>: required; if already used for this supplier, the user sees "Already recorded for this supplier".',
+      '<span class="f">Receive now</span>: per line; above the open quantity shows "Can\'t receive more than the open quantity (4)".',
+      '<span class="f">After saving</span>: the user sees "Delivery GR000312 recorded".'
+    ]],
+    be: ["Backend story", [
+      '<code>deliveryNoteNumber</code>: string(40), unique per supplier, else <code>422 DUPLICATE_DELIVERY_NOTE</code>.',
+      '<code>quantity</code>: decimal(12,3), &gt; 0, ≤ open quantity, else <code>422 QUANTITY_EXCEEDS_OPEN</code>.',
+      '<code>referenceNumber</code>: <code>GR</code> + 6 digits, unique, returned with <code>201</code>.'
+    ]]
+  };
+  const list = document.getElementById("items"), kicker = document.getElementById("kicker");
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  let lens = "ui", run = 0, hover = null;
+  const stage = () => document.getElementById("s-" + lens);
+
+  function highlight() {
+    list.querySelectorAll("li").forEach(li => li.classList.toggle("hl", li.dataset.n === hover));
+    stage().querySelectorAll("[data-to]").forEach(el => el.classList.toggle("hl", el.dataset.to === hover));
+    stage().classList.toggle("hl-mode", !!hover);
+  }
+
+  function render() {
+    kicker.textContent = text[lens][0];
+    list.innerHTML = text[lens][1].map((t, i) => `<li data-n="${i + 1}" tabindex="0"><span class="n" aria-hidden="true">${i + 1}</span><span>${t}</span></li>`).join("");
+    list.querySelectorAll("li").forEach(li => {
+      const on = () => { hover = li.dataset.n; highlight(); }, off = () => { hover = null; highlight(); };
+      li.onmouseenter = on; li.onfocus = on; li.onmouseleave = off; li.onblur = off;
+      li.onclick = () => { hover = hover === li.dataset.n ? null : li.dataset.n; highlight(); };
+    });
+  }
+
+  function fly(from, to) {
+    const a = from.getBoundingClientRect(), b = to.getBoundingClientRect();
+    const g = document.createElement("div");
+    g.className = "ghost"; g.textContent = from.textContent;
+    document.body.appendChild(g);
+    const x0 = a.left + a.width / 2, y0 = a.top + a.height / 2, x1 = b.left + 24, y1 = b.top + b.height / 2;
+    return g.animate([
+      { transform: `translate(${x0}px,${y0}px)` },
+      { transform: `translate(${(x0 + x1) / 2}px,${Math.min(y0, y1) - 40}px)`, offset: .5 },
+      { transform: `translate(${x1}px,${y1}px) scale(.6)`, opacity: .2 }
+    ], { duration: 650, easing: "cubic-bezier(.45,0,.25,1)" }).finished.finally(() => g.remove());
+  }
+
+  function show(next) {
+    const id = ++run;
+    lens = next; hover = null;
+    tabs.forEach(t => { const on = t.dataset.lens === lens; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute("aria-controls")).hidden = !on; });
+    list.classList.add("swap");
+    setTimeout(() => {
+      if (id !== run) return;
+      render(); list.classList.remove("swap");
+      const s = stage(), targets = [...s.querySelectorAll("[data-to]")];
+      targets.forEach(el => el.classList.remove("on"));
+      if (reduce) { targets.forEach(el => el.classList.add("on")); return; }
+      s.classList.add("armed");
+      list.querySelectorAll("li").forEach((li, i) => setTimeout(() => {
+        targets.filter(el => el.dataset.to === li.dataset.n).forEach((el, k) =>
+          setTimeout(() => id === run && fly(li.querySelector(".n"), el).then(() => id === run && el.classList.add("on")), k * 120));
+      }, 250 + i * 450));
+    }, reduce ? 0 : 200);
+  }
+
+  tabs.forEach((t, i) => {
+    t.onclick = () => t.dataset.lens !== lens && show(t.dataset.lens);
+    t.onkeydown = (e) => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); const n = tabs[(i + 1) % 2]; n.focus(); show(n.dataset.lens); } };
+  });
+
+  render();
+  stage().classList.add("armed");
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); show("ui"); } }, { threshold: .4 });
+    io.observe(document.querySelector(".card"));
+  } else show("ui");
+})();
+</script>
+</body>
+</html>

@@ -4,20 +4,64 @@
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
-.avatar { animation: float 6s ease-in-out infinite; }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.hero-character {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 270px);
+  gap: 40px;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 72px 24px 24px;
+  align-items: center;
+}
+.hero-character .hero-copy { display: flex; flex-direction: column; justify-content: center; }
+.hero-art { display: flex; justify-content: center; min-width: 0; }
+/* Character sits beside the copy, roughly its height, feet on the baseline */
+.hero-art img { display: block; width: 100%; max-width: 270px; height: auto; }
 
-/* Now */
+/* Now — one spacing rhythm: 32px between blocks, 8px label→text */
 .now {
   background: var(--bg-soft); border: 1px solid var(--border);
-  border-radius: 14px; padding: 24px;
+  border-radius: 14px; padding: 36px;
+  display: grid; gap: 32px;
 }
-.now > p { margin: 0 0 16px; font-size: 17px; }
-.facts { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 12px; }
-.facts li { display: grid; grid-template-columns: 140px 1fr; gap: 16px; font-size: 15px; }
-.facts strong { font-weight: 600; }
-.facts span { color: var(--muted); }
-.more { font-size: 15px; font-weight: 500; }
+.now p { margin: 0; line-height: 1.6; }
+.now-head p { font-size: 18px; font-weight: 500; }
+
+/* Order-to-payment flow, lit up in sequence */
+.p2p { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; flex-wrap: wrap; row-gap: 12px; }
+.p2p li { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; white-space: nowrap; animation: p2pLit 5s infinite; }
+.p2p li:not(:last-child)::after { content: ""; width: 32px; height: 2px; margin: 0 12px; background: var(--border); }
+.p2p-dot {
+  width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 12px; background: var(--accent-soft); color: var(--accent);
+}
+.p2p li:nth-child(2) { animation-delay: .6s; } .p2p li:nth-child(3) { animation-delay: 1.2s; }
+.p2p li:nth-child(4) { animation-delay: 1.8s; } .p2p li:nth-child(5) { animation-delay: 2.4s; }
+@keyframes p2pLit { 0%, 14%, 100% { color: var(--text); } 4%, 10% { color: var(--accent); } }
+.p2p li:nth-child(n) .p2p-dot { animation: p2pDot 5s infinite; animation-delay: inherit; }
+@keyframes p2pDot { 0%, 14%, 100% { background: var(--accent-soft); color: var(--accent); } 4%, 10% { background: var(--accent); color: #fff; } }
+
+/* Labels: small caps above the text */
+.now h4 { margin: 0 0 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+
+/* Reading order: problem -> what we're doing -> impact -> context */
+.now-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.now-pair > div { padding-left: 16px; border-left: 3px solid var(--border); }
+.now-pair p { font-size: 17px; font-weight: 500; color: var(--text); }
+
+.now-small { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+.now-small h4 { color: var(--text); }
+.now-small p { font-size: 15px; color: var(--muted); }
+
+/* Impact: the one to read. Box bleeds out so its text keeps the same left edge */
+.now-impact {
+  margin: 0 -16px; padding: 12px 16px 12px 13px; border-radius: 8px;
+  background: var(--accent-soft); border-left: 3px solid var(--accent);
+}
+.now-impact h4 { color: var(--accent); }
+.now-impact p { font-size: 15px; font-weight: 500; }
+
+.more { justify-self: start; font-size: 15px; font-weight: 500; }
 
 /* Path */
 .path-intro { margin: -12px 0 28px; color: var(--muted); }
@@ -56,22 +100,44 @@
 }
 
 @media (max-width: 680px) {
-  .facts li { grid-template-columns: 1fr; gap: 2px; }
+  .hero-character { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-top: 48px; }
+  .hero-art { order: -1; justify-content: flex-start; }
+  .hero-art img { max-width: 150px; }
+  .how-points { grid-template-columns: 1fr; gap: 20px; }
+  .now { padding: 24px; gap: 28px; }
+  .now-pair, .now-small { grid-template-columns: 1fr; }
+  .now-pair { gap: 24px; }
+  .now-impact { margin: 0 -12px; padding: 16px 12px 16px 9px; }
+  .p2p li:not(:last-child)::after { width: 12px; margin: 0 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .avatar { animation: none; }
   .path-fill { transform: scaleY(1); }
+  .p2p li, .p2p-dot { animation: none !important; }
 }
 
-/* Approach */
-.pull {
-  margin: 24px 0 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--accent);
-  font-size: 18px; color: var(--text);
-}
+/* How I work */
+.how-lead { margin: -8px 0 28px; font-size: 17px; color: var(--muted); }
+/* Same bar + label treatment as the problem / what we're doing pair */
+.how-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 32px; }
+.how-points > div { padding-left: 16px; border-left: 3px solid var(--border); }
+.how-points h4 { margin: 0 0 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.how-points p { margin: 0; font-size: 15px; line-height: 1.6; }
+.project-copy .how-note { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13px; }
 
 /* Achievements */
+.side-project-image {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  object-fit: contain;
+  object-position: center;
+  background: #0b1020;
+}
 .story-card dl { margin: 0; font-size: 15px; }
 .story-card dt {
   margin-top: 10px; font-size: 12px; font-weight: 600; text-transform: uppercase;
